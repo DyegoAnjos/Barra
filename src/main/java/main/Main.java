@@ -31,11 +31,19 @@ public class Main {
                 }
                 while (heapBarras.quantidade() > 1){
                     Barra novaBarra = new Barra(0);
-                    for ( int j = 0; j < qtdSoldas; j++){
-                        Barra barraSoldar = (Barra) heapBarras.remover();
-                        novaBarra.soldarBarra(barraSoldar);
-                        System.out.print(barraSoldar + " ");
+                    if(heapBarras.quantidade() < qtdSoldas){
+                        while (!heapBarras.estaVazio()){
+                            Barra barraSoldar = (Barra) heapBarras.remover();
+                            novaBarra.soldarBarra(barraSoldar);
+                            System.out.print(barraSoldar + " ");
+                        }
                     }
+                    else
+                        for ( int j = 0; j < qtdSoldas; j++){
+                            Barra barraSoldar = (Barra) heapBarras.remover();
+                            novaBarra.soldarBarra(barraSoldar);
+                            System.out.print(barraSoldar + " ");
+                        }
                     System.out.println();
                     heapBarras.inserir(novaBarra);
 
